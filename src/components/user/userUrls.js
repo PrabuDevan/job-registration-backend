@@ -7,7 +7,8 @@ const router = Router()
 
 router.post('/register', UserController.register)
 router.post('/login', UserController.login)
-router.get('/user-details', verifyJwtToken, UserController.getUserDetails)
+router.get('/user-details', verifyJwtToken, UserController.getCurrentUser)
+router.get('/profile', verifyJwtToken, UserController.getProfile)
 router.use('/admin', adminRoutes)
 
 export default router

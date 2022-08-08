@@ -30,9 +30,21 @@ export const register = async (req, res) => {
 }
 
 
-export const getUserDetails = async (req, res) => {
+export const getCurrentUser = async (req, res) => {
     try {
         const user = await User.findOne({ _id: res.locals.user._id }, 'username isAdmin').lean()
+        res.json(user)
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).json(error)
+    }
+}
+
+
+export const getProfile = async (req, res) => {
+    try {
+        const user = await User.findOne({ _id: res.locals.user._id }).lean()
         res.json(user)
     }
     catch (error) {

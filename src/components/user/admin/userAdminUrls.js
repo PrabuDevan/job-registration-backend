@@ -4,10 +4,10 @@ import { verifyJwtToken, isAdmin } from '../../../services/auth.js'
 
 const router = Router()
 
-router.get('/find', UserAdminController.findAll)
-router.post('/user', UserAdminController.createUser)
-router.get('/user/:userId', UserAdminController.getUser)
-router.put('/user/:userId', UserAdminController.updateUser)
-router.delete('/user/:userId', UserAdminController.deleteUser)
+router.get('/find', verifyJwtToken, isAdmin, UserAdminController.findAll)
+router.post('/user', verifyJwtToken, isAdmin, UserAdminController.createUser)
+router.get('/user/:userId', verifyJwtToken, isAdmin, UserAdminController.getUser)
+router.put('/user/:userId', verifyJwtToken, isAdmin, UserAdminController.updateUser)
+router.delete('/user/:userId', verifyJwtToken, isAdmin, UserAdminController.deleteUser)
 
 export default router
